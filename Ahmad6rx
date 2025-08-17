@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - شبکه اجتماعی مدرن</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .story-ring {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 25%, #4facfe 50%, #00f2fe 75%, #43e97b 100%);
+            padding: 3px;
+            border-radius: 50%;
+        }
+        
+        .post-card {
+            transition: all 0.3s ease;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .like-animation {
+            animation: likeScale 0.3s ease;
+        }
+        
+        @keyframes likeScale {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating-action {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .nav-item {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .active-nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="gradient-bg text-white p-2 rounded-xl">
+                        <i class="fas fa-infinity text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Nexus</h1>
+                </div>
+                
+                <div class="flex-1 max-w-md mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="جستجو..." class="w-full bg-gray-100 rounded-full py-2 px-4 pr-10 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-6 space-x-reverse">
+                    <button class="nav-item p-2 rounded-lg hover:bg-gray-100">
+                        <i class="fas fa-home text-xl"></i>
+                    </button>
+                    <button class="nav-item p-2 rounded-lg hover:bg-gray-100 relative">
+                        <i class="fas fa-heart text-xl"></i>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                    </button>
+                    <button class="nav-item p-2 rounded-lg hover:bg-gray-100">
+                        <i class="fas fa-paper-plane text-xl"></i>
+                    </button>
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full cursor-pointer"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <!-- Stories Section -->
+            <div class="lg:col-span-3">
+                <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                    <h2 class="text-lg font-semibold mb-4">استوری‌ها</h2>
+                    <div class="flex space-x-4 space-x-reverse overflow-x-auto pb-2">
+                        <div class="flex flex-col items-center space-y-2 min-w-max">
+                            <div class="story-ring rounded-full">
+                                <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-plus text-gray-600"></i>
+                                </div>
+                            </div>
+                            <span class="text-xs text-gray-600">استوری شما</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 min-w-max">
+                            <div class="story-ring rounded-full">
+                                <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full"></div>
+                            </div>
+                            <span class="text-xs text-gray-600">علی احمدی</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 min-w-max">
+                            <div class="story-ring rounded-full">
+                                <div class="w-16 h-16 bg-gradient-to-r from-pink-400 to-red-500 rounded-full"></div>
+                            </div>
+                            <span class="text-xs text-gray-600">سارا محمدی</span>
+                        </div>
+                        
+                        <div class="flex flex-col items-center space-y-2 min-w-max">
+                            <div class="story-ring rounded-full">
+                                <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"></div>
+                            </div>
+                            <span class="text-xs text-gray-600">رضا کریمی</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Posts -->
+                <div class="space-y-6">
+                    <!-- Post 1 -->
+                    <div class="post-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <div class="p-4 flex items-center justify-between">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+                                <div>
+                                    <h3 class="font-semibold">علی احمدی</h3>
+                                    <p class="text-sm text-gray-500">۲ ساعت پیش</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="h-96 bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-image text-6xl mb-4 opacity-50"></i>
+                                <p class="text-lg">تصویر زیبای طبیعت</p>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <button class="like-btn flex items-center space-x-1 space-x-reverse hover:text-red-500 transition-colors">
+                                        <i class="far fa-heart text-xl"></i>
+                                        <span>۱۲۳</span>
+                                    </button>
+                                    <button class="flex items-center space-x-1 space-x-reverse hover:text-blue-500 transition-colors">
+                                        <i class="far fa-comment text-xl"></i>
+                                        <span>۴۵</span>
+                                    </button>
+                                    <button class="hover:text-green-500 transition-colors">
+                                        <i class="far fa-paper-plane text-xl"></i>
+                                    </button>
+                                </div>
+                                <button class="hover:text-yellow-500 transition-colors">
+                                    <i class="far fa-bookmark text-xl"></i>
+                                </button>
+                            </div>
+                            <p class="text-gray-800 mb-2">منظره فوق‌العاده‌ای از کوه‌های البرز 🏔️ #طبیعت #عکاسی</p>
+                            <button class="text-gray-500 text-sm hover:text-gray-700">مشاهده همه ۴۵ نظر</button>
+                        </div>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="post-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <div class="p-4 flex items-center justify-between">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-blue-500 rounded-full"></div>
+                                <div>
+                                    <h3 class="font-semibold">سارا محمدی</h3>
+                                    <p class="text-sm text-gray-500">۵ ساعت پیش</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-400 hover:text-gray-600">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="h-96 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-palette text-6xl mb-4 opacity-50"></i>
+                                <p class="text-lg">آثار هنری جدید</p>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <button class="like-btn flex items-center space-x-1 space-x-reverse hover:text-red-500 transition-colors">
+                                        <i class="fas fa-heart text-xl text-red-500"></i>
+                                        <span>۸۹</span>
+                                    </button>
+                                    <button class="flex items-center space-x-1 space-x-reverse hover:text-blue-500 transition-colors">
+                                        <i class="far fa-comment text-xl"></i>
+                                        <span>۲۳</span>
+                                    </button>
+                                    <button class="hover:text-green-500 transition-colors">
+                                        <i class="far fa-paper-plane text-xl"></i>
+                                    </button>
+                                </div>
+                                <button class="hover:text-yellow-500 transition-colors">
+                                    <i class="fas fa-bookmark text-xl text-yellow-500"></i>
+                                </button>
+                            </div>
+                            <p class="text-gray-800 mb-2">کار جدیدم رو چطور می‌بینید؟ 🎨 #هنر #نقاشی #خلاقیت</p>
+                            <button class="text-gray-500 text-sm hover:text-gray-700">مشاهده همه ۲۳ نظر</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-24 space-y-6">
+                    <!-- Profile Card -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mx-auto mb-4"></div>
+                            <h3 class="font-semibold text-lg">شما</h3>
+                            <p class="text-gray-500 text-sm mb-4">@username</p>
+                            <div class="flex justify-center space-x-6 space-x-reverse text-center">
+                                <div>
+                                    <div class="font-semibold">۱۲۳</div>
+                                    <div class="text-xs text-gray-500">پست</div>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">۴۵۶</div>
+                                    <div class="text-xs text-gray-500">دنبال‌کننده</div>
+                                </div>
+                                <div>
+                                    <div class="font-semibold">۷۸۹</div>
+                                    <div class="text-xs text-gray-500">دنبال‌شده</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Suggestions -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="font-semibold mb-4">پیشنهاد برای شما</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full"></div>
+                                    <div>
+                                        <h4 class="font-medium text-sm">مینا رضایی</h4>
+                                        <p class="text-xs text-gray-500">۳ دوست مشترک</p>
+                                    </div>
+                                </div>
+                                <button class="text-blue-500 text-sm font-medium hover:text-blue-600">دنبال کردن</button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3 space-x-reverse">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-teal-500 to-green-500 rounded-full"></div>
+                                    <div>
+                                        <h4 class="font-medium text-sm">حسین نوری</h4>
+                                        <p class="text-xs text-gray-500">۷ دوست مشترک</p>
+                                    </div>
+                                </div>
+                                <button class="text-blue-500 text-sm font-medium hover:text-blue-600">دنبال کردن</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trending -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="font-semibold mb-4">ترند امروز</h3>
+                        <div class="space-y-2">
+                            <div class="text-sm">
+                                <span class="text-gray-500">#</span>
+                                <span class="font-medium">طبیعت_ایران</span>
+                            </div>
+                            <div class="text-sm">
+                                <span class="text-gray-500">#</span>
+                                <span class="font-medium">عکاسی</span>
+                            </div>
+                            <div class="text-sm">
+                                <span class="text-gray-500">#</span>
+                                <span class="font-medium">هنر_دیجیتال</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button class="floating-action gradient-bg text-white p-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110">
+        <i class="fas fa-plus text-xl"></i>
+    </button>
+
+    <script>
+        // Like button functionality
+        document.querySelectorAll('.like-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                const count = this.querySelector('span');
+                
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas', 'text-red-500');
+                    icon.classList.add('like-animation');
+                    count.textContent = parseInt(count.textContent) + 1;
+                } else {
+                    icon.classList.remove('fas', 'text-red-500');
+                    icon.classList.add('far');
+                    icon.classList.remove('like-animation');
+                    count.textContent = parseInt(count.textContent) - 1;
+                }
+                
+                setTimeout(() => {
+                    icon.classList.remove('like-animation');
+                }, 300);
+            });
+        });
+
+        // Follow button functionality
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.textContent.includes('دنبال کردن')) {
+                btn.addEventListener('click', function() {
+                    if (this.textContent === 'دنبال کردن') {
+                        this.textContent = 'دنبال شده';
+                        this.classList.remove('text-blue-500', 'hover:text-blue-600');
+                        this.classList.add('text-gray-500', 'hover:text-gray-600');
+                    } else {
+                        this.textContent = 'دنبال کردن';
+                        this.classList.remove('text-gray-500', 'hover:text-gray-600');
+                        this.classList.add('text-blue-500', 'hover:text-blue-600');
+                    }
+                });
+            }
+        });
+
+        // Floating action button
+        document.querySelector('.floating-action').addEventListener('click', function() {
+            alert('قابلیت آپلود پست به زودی اضافه می‌شود!');
+        });
+
+        // Search functionality
+        document.querySelector('input[type="text"]').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                alert('جستجو برای: ' + this.value);
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970b04c651e6436a',t:'MTc1NTQ1MzA3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
